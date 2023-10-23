@@ -1592,6 +1592,12 @@ input:checked + .toggle-bg{
   overflow-x: hidden;
 }
 
+.truncate{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .whitespace-nowrap{
   white-space: nowrap;
 }
@@ -2119,6 +2125,11 @@ input:checked + .toggle-bg{
 .text-red-500{
   --tw-text-opacity: 1;
   color: rgb(240 82 82 / var(--tw-text-opacity));
+}
+
+.text-gray-100{
+  --tw-text-opacity: 1;
+  color: rgb(210 210 210 / var(--tw-text-opacity));
 }
 
 .underline{

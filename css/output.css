@@ -1709,6 +1709,10 @@ input:checked + .toggle-bg{
   border-top-width: 0px;
 }
 
+.border-r{
+  border-right-width: 1px;
+}
+
 .border-blue-600{
   --tw-border-opacity: 1;
   border-color: rgb(28 100 242 / var(--tw-border-opacity));

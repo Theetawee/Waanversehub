@@ -9,3 +9,10 @@
 .htmx-request.loader{
     display:inline;
 }
+
+.active-link{
+    @apply flex items-center p-2 border-l-4 border-primary-500 bg-primary-100 rounded-none hover:bg-primary-100 dark:bg-primary-950 dark:text-white;
+}
+.nav-link{
+    @apply flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700;
+}

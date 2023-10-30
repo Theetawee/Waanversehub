@@ -35,7 +35,7 @@ window.addEventListener('load', function() {
     // Are Notifications supported in the service worker?
     if (!(reg.showNotification)) {
         // Show a message and activate the button
-        subBtn.textContent = 'Subscribe to Push Messaging';
+        subBtn.textContent = 'Allow Notifications';
         showMessage(gettext('Notifications from Waanverse are not allowed.'));
         return;
     }
@@ -45,7 +45,7 @@ window.addEventListener('load', function() {
     // user changes the permission
     if (Notification.permission === 'denied') {
       // Show a message and activate the button
-      subBtn.textContent = gettext('Subscribe to Push Messaging');
+      subBtn.textContent = gettext('Allow Notifications');
       subBtn.disabled = false;
       showMessage(gettext('Grant Waanverse permission to send you Notifications'));
       return;
@@ -54,7 +54,7 @@ window.addEventListener('load', function() {
     // Check if push messaging is supported
     if (!('PushManager' in window)) {
       // Show a message and activate the button
-      subBtn.textContent = 'Subscribe to Push Messaging';
+      subBtn.textContent = 'Allow Notifications';
       subBtn.disabled = false;
       showMessage(gettext('Device not supported'));
       return;
@@ -169,7 +169,7 @@ function unsubscribe(reg) {
               subscription.unsubscribe()
                 .then(
                   function(successful) {
-                    subBtn.textContent = gettext('Subscribe to Push Messaging');
+                    subBtn.textContent = gettext('Allow Notifications');
                     showMessage(gettext('Notifications restricted.'));
                     isPushEnabled = false;
                     subBtn.disabled = false;

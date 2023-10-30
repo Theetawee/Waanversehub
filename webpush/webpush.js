@@ -1,4 +1,3 @@
-// Based On https://github.com/chrisdavidmills/push-api-demo/blob/283df97baf49a9e67705ed08354238b83ba7e9d3/main.js
 
 var isPushEnabled = false,
     registration,
@@ -28,7 +27,7 @@ window.addEventListener('load', function() {
   }
   // If service worker not supported, show warning to the message box
   else {
-    showMessage(gettext('Service workers are not supported in your browser.'));
+    showMessage(gettext('Device does not support Notifications'));
   }
 
   // Once the service worker is registered set the initial state
@@ -37,7 +36,7 @@ window.addEventListener('load', function() {
     if (!(reg.showNotification)) {
         // Show a message and activate the button
         subBtn.textContent = 'Subscribe to Push Messaging';
-        showMessage(gettext('Showing notifications are not supported in your browser.'));
+        showMessage(gettext('Notifications from Waanverse are not allowed.'));
         return;
     }
 
@@ -48,7 +47,7 @@ window.addEventListener('load', function() {
       // Show a message and activate the button
       subBtn.textContent = gettext('Subscribe to Push Messaging');
       subBtn.disabled = false;
-      showMessage(gettext('Push notifications are blocked by your browser.'));
+      showMessage(gettext('Grant Waanverse permission to send you Notifications'));
       return;
     }
 
@@ -57,7 +56,7 @@ window.addEventListener('load', function() {
       // Show a message and activate the button
       subBtn.textContent = 'Subscribe to Push Messaging';
       subBtn.disabled = false;
-      showMessage(gettext('Push notifications are not available in your browser.'));
+      showMessage(gettext('Device not supported'));
       return;
     }
 
@@ -70,10 +69,10 @@ window.addEventListener('load', function() {
               // Check the information is saved successfully into server
               if (response.status === 201) {
                 // Show unsubscribe button instead
-                subBtn.textContent = gettext('Unsubscribe from Push Messaging');
+                subBtn.textContent = gettext('Restrict notifications from Waanverse');
                 subBtn.disabled = false;
                 isPushEnabled = true;
-                showMessage(gettext('Successfully subscribed to push notifications.'));
+                showMessage(gettext('Permission granted successfully'));
               }
             });
         }
@@ -117,16 +116,16 @@ function subscribe(reg) {
                 // Check the information is saved successfully into server
                 if (response.status === 201) {
                   // Show unsubscribe button instead
-                  subBtn.textContent = gettext('Unsubscribe from Push Messaging');
+                  subBtn.textContent = gettext('Restrict notifications from Waanverse');
                   subBtn.disabled = false;
                   isPushEnabled = true;
-                  showMessage(gettext('Successfully subscribed to push notifications.'));
+                  showMessage(gettext('Notification Permission granted successfully'));
                 }
               });
           })
         .catch(
           function() {
-            console.log(gettext('Error while subscribing to push notifications.'), arguments)
+            console.log(gettext('Error while granting notification permissions.'), arguments)
           })
     }
   );
@@ -171,15 +170,15 @@ function unsubscribe(reg) {
                 .then(
                   function(successful) {
                     subBtn.textContent = gettext('Subscribe to Push Messaging');
-                    showMessage(gettext('Successfully unsubscribed from push notifications.'));
+                    showMessage(gettext('Notifications restricted.'));
                     isPushEnabled = false;
                     subBtn.disabled = false;
                   }
                 )
                 .catch(
                   function(error) {
-                    subBtn.textContent = gettext('Unsubscribe from Push Messaging');
-                    showMessage(gettext('Error while unsubscribing from push notifications.'));
+                    subBtn.textContent = gettext('Restrict notifications from Waanverse');
+                    showMessage(gettext('Error while granting permissions'));
                     subBtn.disabled = false;
                   }
                 );
